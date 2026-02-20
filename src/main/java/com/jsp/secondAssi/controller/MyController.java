@@ -147,8 +147,6 @@ public class MyController {
             sum = sum+i;
         }
         return sum/n.size();
-
-
     }
     //reading cookie
 
