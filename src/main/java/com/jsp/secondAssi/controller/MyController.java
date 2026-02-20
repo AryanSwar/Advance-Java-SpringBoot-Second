@@ -10,13 +10,17 @@ import java.util.List;
 
 @RestController
 public class MyController {
+
     //Add two number
+    //api testing - http://localhost:8080/add?num1=10&num2=20
     @GetMapping("/add")
     public int addNumber(@RequestParam int num1,@RequestParam int num2){
 
         return num1+num2;
     }
+
     //Multiply Two number
+    //api testing - http://localhost:8080/multiply?num1=10&num2=20
     @GetMapping("/multiply")
     public int mulNumber(@RequestParam int num1, @RequestParam int num2){
 
@@ -24,6 +28,7 @@ public class MyController {
     }
 
     //Average of Multiple number
+    //api testing - http://localhost:8080/average?num=10&num=20&num=30&num=40
     @GetMapping("/average")
     public int average(@RequestParam ("num") List<Integer> num1){
         int sum = 0;
@@ -34,6 +39,7 @@ public class MyController {
     }
 
     //Get - object
+    //api testing - http://localhost:8080/studentGet
     @GetMapping("/studentGet")
     public Student studentGet(){
 
@@ -41,18 +47,21 @@ public class MyController {
     }
 
     //Post - object
+    //api testing - http://localhost:8080/studentPost
     @PostMapping("/studentPost")
     public Student studentPost(){
         return new Student();
     }
 
     //Put - object
+    //api testing - http://localhost:8080/studentPut
     @PutMapping("/studentPut")
     public Student studentPut(){
         return new Student();
     }
 
     //Patch - object
+    //api testing - http://localhost:8080/studentPatch
     @PatchMapping("/studentPatch")
     public Student studentPatch(){
 
@@ -60,11 +69,14 @@ public class MyController {
     }
 
     //Delete - object
+    //api testing - http://localhost:8080/studentDelete
     @DeleteMapping("/studentDelete")
     public Student studentDelete(){
         return new Student();
     }
+
     //Get - List
+    //api testing - http://localhost:8080/studentGetList
     @GetMapping("/studentGetList")
     public List<Student> studentGetList(){
         List<Student> l = new ArrayList<>();
@@ -72,6 +84,7 @@ public class MyController {
     }
 
     //Post - List
+    //api testing - http://localhost:8080/studentPostList
     @PostMapping("/studentPostList")
     public List<Student> studentPostList(){
         List<Student> l = new ArrayList<>();
@@ -79,6 +92,7 @@ public class MyController {
     }
 
     //Put - List
+    //api testing - http://localhost:8080/studentPutList
     @PutMapping("/studentPutList")
     public List<Student> studentPutList(){
         List<Student> l = new ArrayList<>();
@@ -86,6 +100,7 @@ public class MyController {
     }
 
     //Patch - List
+    //api testing - http://localhost:8080/studentPatchList
     @PatchMapping("/studentPatchList")
     public List<Student> studentPatchList(){
         List<Student> l = new ArrayList<>();
@@ -93,6 +108,7 @@ public class MyController {
     }
 
     //Delete - List
+    //api testing - http://localhost:8080/studentDeleteList
     @DeleteMapping("/studentDeleteList")
     public List<Student> studentDeleteList(){
         List<Student> l = new ArrayList<>();
@@ -100,6 +116,7 @@ public class MyController {
     }
 
     //Filter - Course
+    //api testing - http://localhost:8080/studentFilCouGet
     @GetMapping("/studentFilCouGet")
     public List<Student> studentFilterCourse(){
         List<Student> l = new ArrayList<>();
@@ -116,6 +133,7 @@ public class MyController {
     }
 
     //Multiple Filter - students
+    //api testing - http://localhost:8080/studentMultiFilGet
     @GetMapping("/studentMultiFilGet")
     public List<Student> studentMultiFilter(){
         List<Student> l = new ArrayList<>();
@@ -132,6 +150,7 @@ public class MyController {
     }
 
     //cookies
+    //api testing - http://localhost:8080/avg?n=10&n=20&n=30
     @GetMapping("/avg")
     public int mul(@RequestParam List<Integer> n, HttpServletResponse resp){
         Cookie cookie = new Cookie("a","10");
@@ -148,10 +167,19 @@ public class MyController {
         }
         return sum/n.size();
     }
-    //reading cookie
 
+    //reading cookie
+    //api testing - http://localhost:8080/cookie
     @GetMapping("/cookie")
     public String cookie(@CookieValue String a){
         return a;
     }
+
+    //using - PathVariable
+    //api testing - http://localhost:8080/api/20/pr?id=10
+    @GetMapping("/api/{num}/pr")
+    public int pv(@RequestParam int id,@PathVariable int num){
+        return id+num;
+    }
+
 }
